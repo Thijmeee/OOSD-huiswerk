@@ -21,6 +21,7 @@ public class Opdracht12_13 {
             charactersCount = charactersCount + wordLength.length();
             wordCount++;
         }
+
         System.out.println("Amount of words: " + wordCount);
         System.out.println("Amount of characters: " + charactersCount);
     }
