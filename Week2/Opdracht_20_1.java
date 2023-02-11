@@ -20,6 +20,8 @@ public class Opdracht_20_1 {
             Collections.sort(arrayList);
             Collections.reverse(arrayList);
             arrayList.forEach(System.out::println);
+
+            scanner.close();
         }
         catch (Exception e){
             e.printStackTrace();
