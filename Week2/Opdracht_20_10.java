@@ -1,24 +1,32 @@
 package Week2;
 
-import java.util.Collections;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class Opdracht_20_10 {
     public static void main(String[] args) {
-        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+        Stack<String> textbook1 = new Stack<>();
+        textbook1.add("Chemistry");
+        textbook1.add("Mathematics");
+        textbook1.add("Biology");
+        textbook1.add("English");
 
-        priorityQueue.add(10);
-        priorityQueue.add(1);
-        priorityQueue.add(15);
-        priorityQueue.add(100);
+        Stack<String> textbook2 = new Stack<>();
+        textbook2.add("Biology");
+        textbook2.add("English");
+        textbook2.add("Geography");
+        textbook2.add("Physics");
 
-        priorityQueue.forEach(System.out::println);
+        Set<String> firstStackSet = new HashSet<>(textbook1);
+        Set<String> secondStackSet = new HashSet<>(textbook2);
 
-        PriorityQueue<Integer> reversePriorityQueue = new PriorityQueue<>(Collections.reverseOrder());
-        reversePriorityQueue.addAll(priorityQueue);
+        firstStackSet.removeAll(textbook2);
+        System.out.println("Words only in first stack: " + firstStackSet);
 
-        System.out.println();
-        reversePriorityQueue.forEach(System.out::println);
+        secondStackSet.removeAll(textbook1);
+        System.out.println("Words only in second stack: " + secondStackSet);
 
+        firstStackSet = new HashSet<>(textbook1);
+        firstStackSet.retainAll(textbook2);
+        System.out.println("Words only in both stacks: " + firstStackSet);
     }
 }
