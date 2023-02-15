@@ -25,7 +25,7 @@ public class Opdracht_21_1 {
         presentSecond.addAll(secondStack);
         presentSecond.removeAll(firstStack);
         System.out.println("Only in the second stack: " + presentSecond);
-        
+
         Stack<String> presentBoth = new Stack<>();
         presentBoth.addAll(secondStack);
         presentBoth.retainAll(firstStack);
