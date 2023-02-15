@@ -4,8 +4,8 @@ public class Main {
         public static void main(String[] args) {
             Rooster rooster = new Rooster("Wiskunde", "LD201", "Pieter", 2);
 
-            rooster.writeFile("rooster.txt");
+            rooster.writeFile("Week1/Object_IO/rooster.txt");
 
-            rooster.readFile("rooster.txt");
+            rooster.readFile("Week1/Object_IO/rooster.txt");
         }
 }
