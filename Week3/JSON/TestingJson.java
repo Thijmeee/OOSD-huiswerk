@@ -1,7 +1,9 @@
 package Week3.JSON;
 
 import javax.json.*;
+import javax.json.stream.JsonParser;
 import javax.net.ssl.HttpsURLConnection;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,6 +11,29 @@ import java.net.URL;
 
 public class TestingJson {
     public static void main(String[] args) throws Exception {
+        JsonReader jsonReader = Json.createReader(new FileInputStream("Map.json"));
+
+        JsonArray layers = jsonReader.readObject().getJsonArray("tilesets");
+
+        for (int i = 0; i < layers.size(); i++) {
+            System.out.println(layers.getJsonObject(i));
+        }
+
+
+
+    }
+
+    public static void readJSON(){
+        String url = "https://api.spacexdata.com/v3/launches/";
+
+        JsonArray data = Json.createReader(callUrl(url)).readArray();
+
+        for (int i = 0; i < data.size(); i++) {
+            JsonObject rocket = data.getJsonObject(i).getJsonObject("rocket");
+            System.out.println(rocket.getJsonString("rocket_id"));
+        }
+    }
+    public static void writeJSON(){
         JsonObject jsonObject = Json.createObjectBuilder()
                 .add("naam", "Jan Jansen")
                 .add("leeftijd", 25)
@@ -21,20 +46,6 @@ public class TestingJson {
             System.out.println("Het JSON-object is succesvol geschreven naar het bestand.");
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-        readJSON();
-
-    }
-
-    public static void readJSON(){
-        String url = "https://api.spacexdata.com/v3/launches/";
-
-        JsonArray data = Json.createReader(callUrl(url)).readArray();
-
-        for (int i = 0; i < data.size(); i++) {
-            JsonObject rocket = data.getJsonObject(i).getJsonObject("rocket");
-            System.out.println(rocket.getJsonString("rocket_id"));
         }
     }
 
@@ -49,6 +60,7 @@ public class TestingJson {
             throw new RuntimeException(e);
         }
     }
+
 }
 
 
