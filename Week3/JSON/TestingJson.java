@@ -3,10 +3,7 @@ package Week3.JSON;
 import javax.json.*;
 import javax.json.stream.JsonParser;
 import javax.net.ssl.HttpsURLConnection;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 
 public class TestingJson {
@@ -16,11 +13,11 @@ public class TestingJson {
         JsonArray layers = jsonReader.readObject().getJsonArray("tilesets");
 
         for (int i = 0; i < layers.size(); i++) {
-            System.out.println(layers.getJsonObject(i));
+            JsonString name = layers.getJsonObject(i).getJsonString("name");
+            JsonNumber firstgid = layers.getJsonObject(i).getJsonNumber("firstgid");
+
+            System.out.println(name + " : " + firstgid);
         }
-
-
-
     }
 
     public static void readJSON(){
